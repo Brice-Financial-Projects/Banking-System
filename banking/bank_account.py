@@ -1,16 +1,4 @@
-""" 
-## 🧾 Challenge 1: Bank Account Class
-
-**Problem Statement**  
-Create a class called `BankAccount` with the following features:
-
-- A constructor that takes `owner_name` and an optional `starting_balance` (default to 0).
-- A `deposit(amount)` method that adds money to the balance.
-- A `withdraw(amount)` method that subtracts money from the balance, unless it would go negative.
-- A `get_balance()` method that returns the current balance.
-
-**Bonus**: Raise a custom `OverdraftError` if the user tries to withdraw more than the balance.
-"""
+"""banking/bank_account.py"""
 
 import random
 
