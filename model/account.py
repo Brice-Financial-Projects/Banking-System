@@ -1,6 +1,8 @@
 """banking/bank_account.py"""
 
 import random
+from db.accounts_store import accounts_db
+
 
 class BankAccount:
     """
@@ -15,12 +17,15 @@ class BankAccount:
     - Raise a custom `OverdraftError` if the user tries to withdraw more than the balance.
     """
 
-    def __init__(self, first_name, last_name, balance):
+    def __init__(self, first_name, last_name):
         """initialize BankAccount class"""
         self.first_name = first_name
         self.last_name = last_name
-        self.balance = balance 
-        
+                
+    def create_cust_id(self, first_name, last_name):
+        """checks for the last customer ID created and creates the next ID in sequential order."""
+
+    
     def create_account(self, first_name, last_name):
         """Checks for account in accounts, then creates an account if none exists"""
         full_name = self.first_name + self.last_name
@@ -34,10 +39,6 @@ class BankAccount:
             print(temp_account)
             
 
-    def deposit(self, amount):
-        """Adds deposit amount to account and returns new balance"""
-        pass
-        
 
 bank_account = BankAccount()
 brice = "Brice"

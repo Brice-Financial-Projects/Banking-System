@@ -8,7 +8,7 @@ Designed for Python backend engineering roles in the fintech space, this system 
 - Layered architecture (`model/`, `service/`, `db/`)
 - Exception handling with custom errors (e.g., `OverdraftError`)
 - Readiness for integration into a REST API (Flask/FastAPI/Django-compatible)
-- Python-only implementation with virtual environment support
+- Environment-specific configuration support via `.env` and `settings.py` scaffolding
 
 All functionality was developed **manually, without AI code generation**, to deepen language fluency and build production-ready coding habits.
 
@@ -22,6 +22,7 @@ All functionality was developed **manually, without AI code generation**, to dee
 - ✅ Raise custom exceptions for overdraft protection
 - ✅ In-memory database (`accounts_db`) simulating future PostgreSQL implementation
 - ✅ Clean OOP class separation for long-term extensibility
+- ✅ `.env`-driven configuration setup to support development, testing, and production modes
 
 ---
 
@@ -42,6 +43,7 @@ This project reinforces key backend development skills relevant to fintech roles
 - Standard library only
 - `python -m venv` for isolated environments
 - Git/GitHub for version control and documentation
+- `.env` file (with `config/settings.py`) for environment variable-based app configuration
 
 ---
 
@@ -49,29 +51,35 @@ This project reinforces key backend development skills relevant to fintech roles
 
 banking-system/
 │
-├── model/
-│   ├── __init__.py
-│   ├── account.py
-│   ├── customer.py
-│   ├── loan.py
-│   └── account_activity.py
+├── config/                      # 💼 Config Files - Configuration settings
+│   ├── __init__.py              # Makes this a Python package
+│   └── settings.py              # Defines the Config class 
 │
-├── service/
-│   ├── __init__.py
-│   └── account_service.py
+├── model/                       # 💼 Domain Models - Core business entities
+│   ├── __init__.py              # Makes this a Python package
+│   ├── account.py               # Defines the BankAccount class (open/close, balance mgmt)
+│   ├── customer.py              # Represents Customer entity (name, ID, contact, etc.)
+│   ├── loan.py                  # Defines Loan class and loan-related logic
+│   └── account_activity.py      # Tracks deposits, withdrawals, and other account actions
 │
-├── db/
-│   ├── __init__.py
-│   └── accounts_store.py
+├── service/                     # 🧠 Business Logic Layer - Coordinates behavior using models
+│   ├── __init__.py              # Package initializer
+│   └── account_service.py       # Handles high-level operations (create account, transfer, etc.)
 │
-├── tests/
-│   ├── __init__.py
-│   └── test_account.py
+├── db/                          # 🗄️ In-memory or future persistent data layer
+│   ├── __init__.py              # Package initializer
+│   └── accounts_store.py        # Temporary in-memory data store (e.g., accounts_db dictionary)
 │
-├── README.md
-├── requirements.txt
-├── .gitignore
-└── venv/
+├── tests/                       # 🧪 Unit Tests
+│   ├── __init__.py              # Package initializer (optional for discovery)
+│   └── test_account.py          # Tests for account functionality (using unittest or pytest)
+│
+├── README.md                    # 📘 Project overview, setup, and documentation
+├── requirements.txt             # 📦 Dependency list (if any external libraries are used)
+├── .gitignore                   # 🚫 Files/folders Git should ignore (e.g., venv, __pycache__)
+├── .env                         # environment variables (Not included in version control)
+├── env.example                 # example of environment variables (included in version control)
+└── venv/                        # 🐍 Local virtual environment (typically ignored in version control)
 
 
 
@@ -83,6 +91,7 @@ banking-system/
 - 🔜 PostgreSQL integration to replace in-memory store
 - 🔜 REST API via Flask, FastAPI, or Django
 - 🔜 Authentication system with role-based permissions
+- 🔜 Config class expansion to support dynamic toggling (Dev, Test, Prod)
 
 ---
 
