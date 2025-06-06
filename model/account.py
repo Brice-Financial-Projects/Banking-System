@@ -24,8 +24,20 @@ class BankAccount:
                 
     def create_cust_id(self, first_name, last_name):
         """checks for the last customer ID created and creates the next ID in sequential order."""
+        #Step 1.  Check database for the last customer ID
+        max_id = 0
+        for cust_id in accounts_db.keys:
+            if cust_id > max_id:
+                cust_id = max_id
+        
+        # Step 2:  Assign next customer ID to the new customer.
+        new_cust_id = cust_id + 1
+        accounts_db[new_cust_id] = {
+            'first_name' : first_name,
+            'last_name' : last_name,
+        }
+        return new_cust_id
 
-    
     def create_account(self, first_name, last_name):
         """Checks for account in accounts, then creates an account if none exists"""
         full_name = self.first_name + self.last_name
