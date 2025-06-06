@@ -26,7 +26,7 @@ class BankAccount:
         """checks for the last customer ID created and creates the next ID in sequential order."""
         #Step 1.  Check database for the last customer ID
         max_id = 0
-        for cust_id in accounts_db.keys:
+        for cust_id in accounts_db.keys():
             if cust_id > max_id:
                 cust_id = max_id
         
@@ -40,15 +40,19 @@ class BankAccount:
 
     def create_account(self, first_name, last_name):
         """Checks for account in accounts, then creates an account if none exists"""
-        full_name = self.first_name + self.last_name
-        if full_name in self.accounts:
-            raise f'{full_name} has an existing account already'
-        else:
-            temp_account = []
-            for acct in range(1,13):
-                acct.random.randint(0,9)
-                temp_account.append(acct)
-            print(temp_account)
+        # Step 1: Check for existing account in accounts_db
+        for last_name, first_name in accounts_db.values():
+            if last_name in accounts_db.values() and first_name in accounts_db.values():
+                print(f'{first_name} {last_name} already exists in the database.')
+                pass
+            
+            # Step 2: create a random account number.
+            else:
+                temp_account = []
+                for acct in range(1,13):
+                    acct.random.randint(0,9)
+                    temp_account.append(acct)
+                print(temp_account)
             
 
 
