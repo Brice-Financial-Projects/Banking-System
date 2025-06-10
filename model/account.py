@@ -51,9 +51,9 @@ class BankAccount:
     def create_account(self, first_name, last_name):
         """Creates an account"""
         temp_account = []
-        for acct in range(1,13):
-            acct.random.randint(0,9)
-            temp_account.append(acct)
+        acct = random.randint(0,9)
+        
+        temp_account.append(acct)
         print(temp_account)
             
 
