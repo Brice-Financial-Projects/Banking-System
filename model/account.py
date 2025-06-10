@@ -58,7 +58,7 @@ class BankAccount:
             
 
 
-bank_account = BankAccount()
+bank_account = BankAccount("Brice" , "Nelson")
 brice = "Brice"
 nelson = "Nelson"
 bank_account.create_account(brice, nelson)
