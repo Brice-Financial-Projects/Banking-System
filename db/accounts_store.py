@@ -18,9 +18,17 @@ transactions_db {
     deposits: [*args],
     withdrawals: [*args],
     balance: balance
+    }
+}
 """
 
 
 accounts_db = {}
 
-transactions = {}
+transactions_db = {
+    '1001': {
+        'deposit':[50.00,80.24],
+        'withdraw': [37.00, 21.52],
+        'balance': 71.72
+    }
+}
