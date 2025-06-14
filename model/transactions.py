@@ -23,11 +23,13 @@ class AccountTransactions:
             print(f'${balance}')
             return balance
         else:
-            print(f'{self.cust_id} does not exist in the database, please check for correct customer identification')
+            raise ValueError(f'Customer ID {self.cust_id} not found in the database')
 
 
 cust_id = '1001'
 account_transactions = AccountTransactions(cust_id)
 
-
-account_transactions.balance()
+try:
+    account_transactions.balance()
+except ValueError as e:
+    print(f'Error: {e}')

@@ -23,7 +23,17 @@ transactions_db {
 """
 
 
-accounts_db = {}
+accounts_db = {
+    '1001': {
+    'first_name': 'briana',
+    'last_name': 'smith',
+    'acct_num': '854876552154',
+    'address': '2780 briar cliff rd',
+    'city': 'miami',
+    'state': 'FL',
+    'zip': 12345,
+    }
+}
 
 transactions_db = {
     '1001': {
