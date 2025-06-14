@@ -12,7 +12,15 @@ accounts_db {
     zip: zip,
     }
 }
+
+transactions_db {
+    cust_id: {
+    deposits: [*args],
+    withdrawals: [*args],
+    balance: balance
 """
 
 
 accounts_db = {}
+
+transactions = {}
