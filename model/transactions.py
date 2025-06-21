@@ -42,36 +42,37 @@ class AccountTransactions:
         else:
             raise ValueError(f'Customer ID {self.cust_id} not found in the database')
 
-
     def deposit(self, deposit):
         """
         Deposits funds into the customer's account.
-        
+
         This method adds the specified amount to the customer's current balance
-        in the transaction database. If the customer ID does not exist in the 
+        in the transaction database. If the customer ID does not exist in the
         database, a ValueError is raised.
-        
+
         Args:
-            deposit (float): The amount to deposit into the account. Must be a 
+            deposit (float): The amount to deposit into the account. Must be a
                              positive number.
-        
+
         Returns:
             float: The new account balance after the deposit.
-        
+
         Raises:
             ValueError: If the customer ID is not found in the database.
             ValueError: If the deposit amount is not positive.
-        
-        Examples:
-            >>> account = AccountTransactions('1001')
-            >>> account.deposit(100.50)
-            Deposited $100.50
-            $600.50
-            600.5
         """
+        if deposit <= 0:
+            raise ValueError("Deposit amount must be positive.")
 
+        if self.cust_id not in transactions_db:
+            raise ValueError("Customer ID not found.")
 
+        transactions_db[self.cust_id]['balance'] += deposit
 
+        new_balance = transactions_db[self.cust_id]['balance']
+        print(f"Deposited ${deposit:.2f}")
+        print(f"${new_balance:.2f}")
+        return new_balance
 
 
 cust_id = '1001'
