@@ -72,8 +72,16 @@ class AccountTransactions:
         new_balance = transactions_db[self.cust_id]['balance']
         print(f"Deposited ${deposit:.2f}")
         print(f"${new_balance:.2f}")
+
         return new_balance
 
+    def withdraw(self, amt):
+        """
+
+        :param amt:
+        :return:
+        """
+        pass
 
 cust_id = '1001'
 account_transactions = AccountTransactions(cust_id)
