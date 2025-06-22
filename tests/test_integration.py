@@ -31,7 +31,7 @@ def mock_both_dbs():
             yield accounts_mock, transactions_mock
 
 
-    def test_full_customer_workflow(mock_both_dbs, BankAccount, AccountTransactions):
+def test_full_customer_workflow(mock_both_dbs, BankAccount, AccountTransactions):
     """Test the full customer workflow from account creation to transactions."""
     accounts_db, transactions_db = mock_both_dbs
 
@@ -75,7 +75,7 @@ def mock_both_dbs():
         assert final_balance == 350.00
 
 
-    def test_edge_case_account_creation_with_existing_number(mock_both_dbs, BankAccount):
+def test_edge_case_account_creation_with_existing_number(mock_both_dbs, BankAccount):
     """Test account creation when a generated account number already exists."""
     accounts_db, _ = mock_both_dbs
 
@@ -99,7 +99,7 @@ def mock_both_dbs():
         assert account_num.isdigit()
 
 
-    def test_overdraft_scenario(mock_both_dbs, AccountTransactions):
+def test_overdraft_scenario(mock_both_dbs, AccountTransactions):
     """Test withdrawing more than the balance."""
     _, transactions_db = mock_both_dbs
 
@@ -121,7 +121,7 @@ def mock_both_dbs():
         assert transactions_db['1001']['balance'] == -50.00
 
 
-    def test_multiple_customer_accounts(mock_both_dbs, BankAccount, AccountTransactions):
+def test_multiple_customer_accounts(mock_both_dbs, BankAccount, AccountTransactions):
     """Test creating and managing multiple customer accounts."""
     accounts_db, transactions_db = mock_both_dbs
 

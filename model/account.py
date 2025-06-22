@@ -3,6 +3,15 @@
 import random
 from db.accounts_store import accounts_db
 
+# Import OverdraftError or define it here if needed
+try:
+    from model.overdraft import OverdraftError
+except ImportError:
+    # Define OverdraftError if not available for import
+    class OverdraftError(Exception):
+        """Custom error for overdraft attempts."""
+        pass
+
 
 class BankAccount:
     """

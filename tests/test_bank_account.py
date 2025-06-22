@@ -25,7 +25,7 @@ def bank_account(BankAccount):
     return BankAccount("Test", "User")
 
 
-    def test_bank_account_initialization(BankAccount):
+def test_bank_account_initialization(BankAccount):
     """Test BankAccount initialization."""
     account = BankAccount("John", "Doe")
     assert account.first_name == "John"

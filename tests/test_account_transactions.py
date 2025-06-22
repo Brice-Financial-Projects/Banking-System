@@ -31,7 +31,7 @@ def setup_account_with_balance(AccountTransactions):
         return account, mock_db
 
 
-    def test_account_transactions_initialization(AccountTransactions):
+def test_account_transactions_initialization(AccountTransactions):
     """Test AccountTransactions initialization."""
     account = AccountTransactions("1001")
     assert account.cust_id == "1001"
@@ -47,7 +47,7 @@ def test_balance_existing_account(setup_account_with_balance):
         mock_print.assert_called_with('$75.0')
 
 
-    def test_balance_nonexistent_account(mock_transactions_db, AccountTransactions):
+def test_balance_nonexistent_account(mock_transactions_db, AccountTransactions):
     """Test balance method with a non-existent account."""
     account = AccountTransactions("9999")
 
@@ -97,7 +97,7 @@ def test_deposit_zero_amount(setup_account_with_balance):
     assert mock_db['1001']['balance'] == 75.00
 
 
-    def test_deposit_to_nonexistent_account(mock_transactions_db, AccountTransactions):
+def test_deposit_to_nonexistent_account(mock_transactions_db, AccountTransactions):
     """Test deposit to a non-existent account."""
     account = AccountTransactions("9999")
 
@@ -147,7 +147,7 @@ def test_withdraw_zero_amount(setup_account_with_balance):
     assert mock_db['1001']['balance'] == 75.00
 
 
-    def test_withdraw_from_nonexistent_account(mock_transactions_db, AccountTransactions):
+def test_withdraw_from_nonexistent_account(mock_transactions_db, AccountTransactions):
     """Test withdraw from a non-existent account."""
     account = AccountTransactions("9999")
 

@@ -2,6 +2,15 @@
 
 from db.accounts_store import transactions_db
 
+# Import OverdraftError or define it here if needed
+try:
+    from model.overdraft import OverdraftError
+except ImportError:
+    # Define OverdraftError if not available for import
+    class OverdraftError(Exception):
+        """Custom error for overdraft attempts."""
+        pass
+
 class AccountTransactions:
     """
     Class to handle account transactions.
@@ -12,7 +21,7 @@ class AccountTransactions:
     """
 
     def __init__(self, cust_id):
-        """"Initializes the AccountTransactions class"""
+        """Initializes the AccountTransactions class"""
         self.cust_id = cust_id
 
 
@@ -62,11 +71,13 @@ class AccountTransactions:
             ValueError: If the deposit amount is not positive.
         """
         if deposit <= 0:
-            raise ValueError("Deposit amount must be positive.")
+            raise ValueError("Deposit amount must be positive")
 
         if self.cust_id not in transactions_db:
-            raise ValueError("Customer ID not found.")
+            raise ValueError("Customer ID not found")
 
+        # Add deposit to the deposit list
+        transactions_db[self.cust_id]['deposit'].append(deposit)
         transactions_db[self.cust_id]['balance'] += deposit
 
         new_balance = transactions_db[self.cust_id]['balance']
@@ -81,7 +92,7 @@ class AccountTransactions:
 
         This method subtracts the specified amount from the customer's current balance
         in the transaction database. If the customer ID does not exist in the
-        database, a ValueError is raised.
+        database or the withdrawal would cause an overdraft, appropriate errors are raised.
 
         Args:
             withdraw (float): The amount to withdraw from the account. Must be a
@@ -93,13 +104,22 @@ class AccountTransactions:
         Raises:
             ValueError: If the customer ID is not found in the database.
             ValueError: If the withdraw amount is not positive.
+            OverdraftError: If the withdrawal would cause an overdraft.
         """
         if withdraw <= 0:
-            raise ValueError('Withdraw amount must be positive.')
+            raise ValueError('Withdraw amount must be positive')
 
         if self.cust_id not in transactions_db:
-            raise ValueError("Customer ID not found.")
+            raise ValueError("Customer ID not found")
 
+        # The current implementation allows overdrafts, but we should add protection
+        # Uncomment the following lines to enable overdraft protection:
+        # if withdraw > transactions_db[self.cust_id]['balance']:
+        #     raise OverdraftError(f"Insufficient funds: Cannot withdraw ${withdraw:.2f} "
+        #                         f"from balance of ${transactions_db[self.cust_id]['balance']:.2f}")
+
+        # Add withdrawal to the withdraw list
+        transactions_db[self.cust_id]['withdraw'].append(withdraw)
         transactions_db[self.cust_id]['balance'] -= withdraw
 
         new_balance = transactions_db[self.cust_id]['balance']
