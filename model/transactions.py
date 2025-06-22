@@ -75,18 +75,44 @@ class AccountTransactions:
 
         return new_balance
 
-    def withdraw(self, amt):
+    def withdraw(self, withdraw):
         """
+        Withdraw funds from the customer's account.
 
-        :param amt:
-        :return:
+        This method subtracts the specified amount from the customer's current balance
+        in the transaction database. If the customer ID does not exist in the
+        database, a ValueError is raised.
+
+        Args:
+            withdraw (float): The amount to withdraw from the account. Must be a
+                             positive number.
+
+        Returns:
+            float: The new account balance after the withdraw.
+
+        Raises:
+            ValueError: If the customer ID is not found in the database.
+            ValueError: If the withdraw amount is not positive.
         """
-        pass
+        if withdraw <= 0:
+            raise ValueError('Withdraw amount must be positive.')
 
-cust_id = '1001'
-account_transactions = AccountTransactions(cust_id)
+        if self.cust_id not in transactions_db:
+            raise ValueError("Customer ID not found.")
 
-try:
-    account_transactions.balance()
-except ValueError as e:
-    print(f'Error: {e}')
+        transactions_db[self.cust_id]['balance'] -= withdraw
+
+        new_balance = transactions_db[self.cust_id]['balance']
+        print(f"Withdraw ${withdraw:.2f}")
+        print(f"${new_balance:.2f}")
+        return new_balance
+
+# Test code moved to a main block to prevent it from running when imported
+if __name__ == "__main__":
+    cust_id = '1001'
+    account_transactions = AccountTransactions(cust_id)
+
+    try:
+        account_transactions.balance()
+    except ValueError as e:
+        print(f'Error: {e}')

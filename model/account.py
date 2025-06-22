@@ -33,13 +33,18 @@ class BankAccount:
         #Step 1.  Check database for the last customer ID
         max_id = 1000
         for cust_id in accounts_db.keys():
-            if cust_id > max_id:
-                max_id = cust_id
+            try:
+                cust_id_int = int(cust_id)
+                if cust_id_int > max_id:
+                    max_id = cust_id_int
+            except (ValueError, TypeError):
+                # Skip keys that can't be converted to integers
+                continue
         
         # Step 2:  Assign next customer ID to the new customer and store customer info into a dict.
         new_cust_id_info = max_id + 1
         acct_num = self.create_account(first_name,last_name)
-        accounts_db[new_cust_id_info] = {
+        accounts_db[str(new_cust_id_info)] = {
             'first_name' : first_name,
             'last_name' : last_name,
             'acct_num': acct_num,
@@ -72,22 +77,21 @@ class BankAccount:
         else:
             return acct_num
 
-            
+# Test code moved to a main block to prevent it from running when imported
+if __name__ == "__main__":
+    bank_account = BankAccount("Brice" , "Nelson")
+    brice = "Brice"
+    nelson = "Nelson"
+    address = '3650 Hampton Glen Place'
+    city = 'Jacksonville'
+    state = 'FL'
+    zip = '32257'
 
+    bank_account.create_cust_id(brice, nelson, address, city, state, zip)
+    bank_account.check_for_account(brice, nelson)
+    from pprint import pprint
 
-bank_account = BankAccount("Brice" , "Nelson")
-brice = "Brice"
-nelson = "Nelson"
-address = '3650 Hampton Glen Place'
-city = 'Jacksonville'
-state = 'FL'
-zip = '32257'
+    cust_id = bank_account.create_cust_id(brice, nelson, address, city, state, zip)
+    pprint(accounts_db)
 
-bank_account.create_cust_id(brice, nelson, address, city, state, zip)
-bank_account.check_for_account(brice, nelson)
-from pprint import pprint
-
-cust_id = bank_account.create_cust_id(brice, nelson, address, city, state, zip)
-pprint(accounts_db)
-
-# print(accounts_db)
+    # print(accounts_db)
