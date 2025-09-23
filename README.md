@@ -101,7 +101,7 @@ This project is part of my transition from civil engineering to software enginee
 
 It reflects my commitment to writing clean, extensible code — and building systems that mirror real-world financial infrastructure from the ground up.
 
-> All code was written manually. AI was used solely for critique and review purposes.
+> All code was written manually. AI was used solely for the README as well as for critique and review purposes.
 
 ---
 
