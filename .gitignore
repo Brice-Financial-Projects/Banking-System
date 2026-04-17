@@ -1,5 +1,60 @@
-venv
-*__pycache__
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment files
 .env
-.vscode
-.idea
+.env.*
+!.env.example
+
+# Testing, coverage, and type-checker caches
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.pyre/
+.pytype/
+.ruff_cache/
+
+# Build and packaging artifacts
+build/
+dist/
+site/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+src/*.egg-info/
+
+# Tooling environments
+.tox/
+.nox/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# OS and file-manager noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs and local runtime files
+*.log
+*.pid
+*.pid.lock
+
+# Local override files
+*.local

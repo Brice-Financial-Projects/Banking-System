@@ -8,15 +8,15 @@ from unittest import mock
 @pytest.fixture
 def BankAccount():
     """Import and return the BankAccount class."""
-    with mock.patch('model.account.accounts_db', {}):
+    with mock.patch('banking_system.model.account.accounts_db', {}):
         with mock.patch('builtins.print'):
-            from model.account import BankAccount as BA
+            from banking_system.model.account import BankAccount as BA
             return BA
 
 @pytest.fixture
 def mock_accounts_db():
     """Fixture to create a mock accounts database."""
-    with mock.patch('model.account.accounts_db', {}) as mock_db:
+    with mock.patch('banking_system.model.account.accounts_db', {}) as mock_db:
         yield mock_db
 
 @pytest.fixture
@@ -54,7 +54,7 @@ def test_create_account_recursion_on_duplicate(bank_account):
         mock_existing_account = {'acct_num': '111111111111'}
 
         # Use a context manager to simulate the account existing in the database
-        with mock.patch('model.account.accounts_db.values', return_value=[mock_existing_account]):
+        with mock.patch('banking_system.model.account.accounts_db.values', return_value=[mock_existing_account]):
             account_number = bank_account.create_account("Test", "User")
 
             # The function should have recursed and generated a different account number

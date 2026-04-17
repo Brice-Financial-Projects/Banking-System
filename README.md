@@ -5,12 +5,12 @@ A modular, object-oriented Python backend system simulating real-world banking w
 Designed for Python backend engineering roles in the fintech space, this system emphasizes:
 
 - Domain-driven modeling (`BankAccount`, `Customer`, `Loan`, `AccountActivity`)
-- Layered architecture (`model/`, `service/`, `db/`)
+- Layered architecture in a src layout (`src/banking_system/model`, `src/banking_system/db`, `src/banking_system/config`)
 - Exception handling with custom errors (e.g., `OverdraftError`)
 - Readiness for integration into a REST API (Flask/FastAPI/Django-compatible)
 - Environment-specific configuration support via `.env` and `settings.py` scaffolding
 
-All functionality was developed **manually, without AI code generation**, to deepen language fluency and build production-ready coding habits.
+All core banking functionality and business logic were developed **manually, without AI code generation**, to deepen language fluency and build production-ready coding habits.
 
 ---
 
@@ -43,7 +43,7 @@ This project reinforces key backend development skills relevant to fintech roles
 - Standard library only
 - `python -m venv` for isolated environments
 - Git/GitHub for version control and documentation
-- `.env` file (with `config/settings.py`) for environment variable-based app configuration
+- `.env` file (with `src/banking_system/config/settings.py`) for environment variable-based app configuration
 
 ---
 
@@ -52,35 +52,43 @@ This project reinforces key backend development skills relevant to fintech roles
 ```plaintext
 banking-system/
 │
-├── config/                      # 💼 Config Files - Configuration settings
-│   ├── __init__.py              # Makes this a Python package
-│   └── settings.py              # Defines the Config class 
+├── src/                         # 📦 Source root for installable Python packages
+│   └── banking_system/          # 🏦 Main application package container
+│       ├── __init__.py          # Exposes banking_system as a Python package
+│       ├── config/              # 💼 Configuration layer for environment-based settings
+│       │   ├── __init__.py      # Makes config importable as a package
+│       │   └── settings.py      # Defines Config, Development, Testing, and Production settings
+│       ├── db/                  # 🗄️ In-memory data layer and persistence placeholders
+│       │   ├── __init__.py      # Makes db importable as a package
+│       │   └── accounts_store.py # Stores mock accounts_db and transactions_db dictionaries
+│       └── model/               # 💼 Domain models and banking business objects
+│           ├── __init__.py      # Makes model importable as a package
+│           ├── account.py       # Defines the BankAccount class and customer account creation logic
+│           ├── overdraft.py     # Defines the custom OverdraftError exception
+│           ├── pseudo_account.py # Holds early pseudo-code or alternate account creation ideas
+│           └── transactions.py  # Defines AccountTransactions for deposits, withdrawals, and balances
 │
-├── model/                       # 💼 Domain Models - Core business entities
-│   ├── __init__.py              # Makes this a Python package
-│   ├── account.py               # Defines the BankAccount class (open/close, balance mgmt)
-│   ├── customer.py              # Represents Customer entity (name, ID, contact, etc.)
-│   ├── loan.py                  # Defines Loan class and loan-related logic
-│   └── account_activity.py      # Tracks deposits, withdrawals, and other account actions
+├── docs/                        # 📚 Project documentation and reference notes
+│   └── structure.md             # Documents the current repository layout with explanations
 │
-├── service/                     # 🧠 Business Logic Layer - Coordinates behavior using models
-│   ├── __init__.py              # Package initializer
-│   └── account_service.py       # Handles high-level operations (create account, transfer, etc.)
+├── tests/                       # 🧪 Test suite covering units, integration paths, and edge cases
+│   ├── __init__.py              # Marks tests as a package for certain import/discovery cases
+│   ├── conftest.py              # Shared pytest fixtures and reusable test setup helpers
+│   ├── test_account_transactions.py # Verifies deposit, withdraw, and balance behavior
+│   ├── test_bank_account.py     # Tests bank account creation and customer record behavior
+│   ├── test_custom_bank_account.py # Explores enhanced or alternate bank account behavior
+│   ├── test_integration.py      # Validates end-to-end workflows across account and transaction modules
+│   └── test_overdraft.py        # Covers overdraft-related scenarios and expected error behavior
 │
-├── db/                          # 🗄️ In-memory or future persistent data layer
-│   ├── __init__.py              # Package initializer
-│   └── accounts_store.py        # Temporary in-memory data store (e.g., accounts_db dictionary)
-│
-├── tests/                       # 🧪 Unit Tests
-│   ├── __init__.py              # Package initializer (optional for discovery)
-│   └── test_account.py          # Tests for account functionality (using unittest or pytest)
-│
-├── README.md                    # 📘 Project overview, setup, and documentation
-├── requirements.txt             # 📦 Dependency list (if any external libraries are used)
-├── .gitignore                   # 🚫 Files/folders Git should ignore (e.g., venv, __pycache__)
-├── .env                         # environment variables (Not included in version control)
-├── env.example                 # example of environment variables (included in version control)
-└── venv/                        # 🐍 Local virtual environment (typically ignored in version control)
+├── .env.example                 # 🧾 Example environment variables for local configuration
+├── pyproject.toml               # ⚙️ Project metadata, dependencies, pytest, and setuptools config
+├── requirements.txt             # 📦 Pinned dependency list for environments that still use pip requirements files
+├── uv.lock                      # 🔒 Lockfile capturing fully resolved dependency versions
+├── README.md                    # 📘 Project overview, setup, and architecture notes
+├── .gitignore                   # 🚫 Files and folders Git should ignore
+├── .venv/                       # 🐍 Local virtual environment directory (typically ignored)
+├── .pytest_cache/               # 🧪 Pytest cache artifacts from local test runs
+└── .coverage                    # 📊 Coverage data file generated by pytest-cov/coverage
 ```
 
 ---
@@ -101,7 +109,7 @@ This project is part of my transition from civil engineering to software enginee
 
 It reflects my commitment to writing clean, extensible code — and building systems that mirror real-world financial infrastructure from the ground up.
 
-> All code was written manually. AI was used solely for the README as well as for critique and review purposes.
+> Core business logic was written manually. AI assistance was limited to documentation, critique/review, and project-structure updates (for example, src-layout import and packaging configuration).
 
 ---
 
@@ -115,7 +123,7 @@ It reflects my commitment to writing clean, extensible code — and building sys
 
 ## 🙌 Let's Connect
 
-If you're hiring for backend Python roles in fintech, or just want to follow my engineering journey, feel free to connect:
+If you’d like to connect or follow my engineering journey, feel free to reach out:
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/brice-a-nelson-p-e-mba-36b28b15/)
 - 📂 [My GitHub Financial Projects Portfolio](https://github.com/Brice-Financial-Projects)

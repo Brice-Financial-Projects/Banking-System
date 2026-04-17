@@ -6,17 +6,17 @@ from unittest import mock
 @pytest.fixture
 def BankAccount():
     """Import and return the BankAccount class."""
-    with mock.patch('model.account.accounts_db', {}):
+    with mock.patch('banking_system.model.account.accounts_db', {}):
         with mock.patch('builtins.print'):
-            from model.account import BankAccount as BA
+            from banking_system.model.account import BankAccount as BA
             return BA
 
 @pytest.fixture
 def AccountTransactions():
     """Import and return the AccountTransactions class."""
-    with mock.patch('model.transactions.transactions_db', {}):
+    with mock.patch('banking_system.model.transactions.transactions_db', {}):
         with mock.patch('builtins.print'):
-            from model.transactions import AccountTransactions as AT
+            from banking_system.model.transactions import AccountTransactions as AT
             return AT
 
 
@@ -26,8 +26,8 @@ def mock_both_dbs():
     accounts_mock = {}
     transactions_mock = {}
 
-    with mock.patch('model.account.accounts_db', accounts_mock):
-        with mock.patch('model.transactions.transactions_db', transactions_mock):
+    with mock.patch('banking_system.model.account.accounts_db', accounts_mock):
+        with mock.patch('banking_system.model.transactions.transactions_db', transactions_mock):
             yield accounts_mock, transactions_mock
 
 

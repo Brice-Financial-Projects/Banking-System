@@ -6,21 +6,21 @@ from unittest import mock
 @pytest.fixture
 def AccountTransactions():
     """Import and return the AccountTransactions class."""
-    with mock.patch('model.transactions.transactions_db', {}):
+    with mock.patch('banking_system.model.transactions.transactions_db', {}):
         with mock.patch('builtins.print'):
-            from model.transactions import AccountTransactions as AT
+            from banking_system.model.transactions import AccountTransactions as AT
             return AT
 
 @pytest.fixture
 def mock_transactions_db():
     """Fixture to create a mock transactions database."""
-    with mock.patch('model.transactions.transactions_db', {}) as mock_db:
+    with mock.patch('banking_system.model.transactions.transactions_db', {}) as mock_db:
         yield mock_db
 
 @pytest.fixture
 def setup_account_with_balance(AccountTransactions):
     """Fixture to create an account with initial balance."""
-    with mock.patch('model.transactions.transactions_db', {
+    with mock.patch('banking_system.model.transactions.transactions_db', {
         '1001': {
             'deposit': [100.00],
             'withdraw': [25.00],
