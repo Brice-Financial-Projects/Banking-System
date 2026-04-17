@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: banking-system
+Version: 0.1.0
+Summary: python OOP Project that handles multiple users with the creation and handling of bank accounts, account numbers, and transaction management
+Requires-Python: >=3.11
+Requires-Dist: numpy==2.3.0

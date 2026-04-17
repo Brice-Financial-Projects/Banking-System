@@ -5,12 +5,12 @@ requires-python = ">=3.11"
 [[package]]
 name = "banking-system"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "numpy" },
 ]
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 dev = [
     { name = "coverage" },
     { name = "iniconfig" },
@@ -22,17 +22,18 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "coverage", marker = "extra == 'dev'", specifier = "==7.9.1" },
-    { name = "iniconfig", marker = "extra == 'dev'", specifier = "==2.1.0" },
-    { name = "numpy", specifier = "==2.3.0" },
-    { name = "packaging", marker = "extra == 'dev'", specifier = "==25.0" },
-    { name = "pluggy", marker = "extra == 'dev'", specifier = "==1.6.0" },
-    { name = "pygments", marker = "extra == 'dev'", specifier = "==2.19.2" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = "==8.4.1" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = "==6.2.1" },
+requires-dist = [{ name = "numpy", specifier = "==2.3.0" }]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "coverage", specifier = "==7.9.1" },
+    { name = "iniconfig", specifier = "==2.1.0" },
+    { name = "packaging", specifier = "==25.0" },
+    { name = "pluggy", specifier = "==1.6.0" },
+    { name = "pygments", specifier = "==2.19.2" },
+    { name = "pytest", specifier = "==8.4.1" },
+    { name = "pytest-cov", specifier = "==6.2.1" },
 ]
-provides-extras = ["dev"]
 
 [[package]]
 name = "colorama"

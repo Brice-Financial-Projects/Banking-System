@@ -5,7 +5,7 @@ A modular, object-oriented Python backend system simulating real-world banking w
 Designed for Python backend engineering roles in the fintech space, this system emphasizes:
 
 - Domain-driven modeling (`BankAccount`, `Customer`, `Loan`, `AccountActivity`)
-- Layered architecture (`model/`, `service/`, `db/`)
+- Layered architecture in a src layout (`src/banking_system/model`, `src/banking_system/db`, `src/banking_system/config`)
 - Exception handling with custom errors (e.g., `OverdraftError`)
 - Readiness for integration into a REST API (Flask/FastAPI/Django-compatible)
 - Environment-specific configuration support via `.env` and `settings.py` scaffolding
@@ -43,7 +43,7 @@ This project reinforces key backend development skills relevant to fintech roles
 - Standard library only
 - `python -m venv` for isolated environments
 - Git/GitHub for version control and documentation
-- `.env` file (with `config/settings.py`) for environment variable-based app configuration
+- `.env` file (with `src/banking_system/config/settings.py`) for environment variable-based app configuration
 
 ---
 
@@ -52,35 +52,35 @@ This project reinforces key backend development skills relevant to fintech roles
 ```plaintext
 banking-system/
 │
-├── config/                      # 💼 Config Files - Configuration settings
-│   ├── __init__.py              # Makes this a Python package
-│   └── settings.py              # Defines the Config class 
+├── src/
+│   └── banking_system/
+│       ├── __init__.py
+│       ├── config/
+│       │   ├── __init__.py
+│       │   └── settings.py
+│       ├── db/
+│       │   ├── __init__.py
+│       │   └── accounts_store.py
+│       └── model/
+│           ├── __init__.py
+│           ├── account.py
+│           ├── overdraft.py
+│           ├── pseudo_account.py
+│           └── transactions.py
 │
-├── model/                       # 💼 Domain Models - Core business entities
-│   ├── __init__.py              # Makes this a Python package
-│   ├── account.py               # Defines the BankAccount class (open/close, balance mgmt)
-│   ├── customer.py              # Represents Customer entity (name, ID, contact, etc.)
-│   ├── loan.py                  # Defines Loan class and loan-related logic
-│   └── account_activity.py      # Tracks deposits, withdrawals, and other account actions
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_account_transactions.py
+│   ├── test_bank_account.py
+│   ├── test_custom_bank_account.py
+│   ├── test_integration.py
+│   └── test_overdraft.py
 │
-├── service/                     # 🧠 Business Logic Layer - Coordinates behavior using models
-│   ├── __init__.py              # Package initializer
-│   └── account_service.py       # Handles high-level operations (create account, transfer, etc.)
-│
-├── db/                          # 🗄️ In-memory or future persistent data layer
-│   ├── __init__.py              # Package initializer
-│   └── accounts_store.py        # Temporary in-memory data store (e.g., accounts_db dictionary)
-│
-├── tests/                       # 🧪 Unit Tests
-│   ├── __init__.py              # Package initializer (optional for discovery)
-│   └── test_account.py          # Tests for account functionality (using unittest or pytest)
-│
-├── README.md                    # 📘 Project overview, setup, and documentation
-├── requirements.txt             # 📦 Dependency list (if any external libraries are used)
-├── .gitignore                   # 🚫 Files/folders Git should ignore (e.g., venv, __pycache__)
-├── .env                         # environment variables (Not included in version control)
-├── env.example                 # example of environment variables (included in version control)
-└── venv/                        # 🐍 Local virtual environment (typically ignored in version control)
+├── pyproject.toml
+├── requirements.txt
+├── README.md
+└── structure.md
 ```
 
 ---
