@@ -105,9 +105,7 @@ banking-system/
 
 ## 🧠 About This Project
 
-This project is part of my transition from civil engineering to software engineering, with a focus on backend development for fintech applications.
-
-It reflects my commitment to writing clean, extensible code — and building systems that mirror real-world financial infrastructure from the ground up.
+This project was built from scratch, without any AI code generation, to demonstrate my ability to architect and implement a complex backend system using clean code principles and OOP design patterns.
 
 > Core business logic was written manually. AI assistance was limited to documentation, critique/review, and project-structure updates (for example, src-layout import and packaging configuration).
 
