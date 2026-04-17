@@ -10,7 +10,7 @@ Designed for Python backend engineering roles in the fintech space, this system 
 - Readiness for integration into a REST API (Flask/FastAPI/Django-compatible)
 - Environment-specific configuration support via `.env` and `settings.py` scaffolding
 
-All functionality was developed **manually, without AI code generation**, to deepen language fluency and build production-ready coding habits.
+All core banking functionality and business logic were developed **manually, without AI code generation**, to deepen language fluency and build production-ready coding habits.
 
 ---
 
@@ -109,7 +109,7 @@ This project is part of my transition from civil engineering to software enginee
 
 It reflects my commitment to writing clean, extensible code — and building systems that mirror real-world financial infrastructure from the ground up.
 
-> All code was written manually. AI was used solely for the README as well as for critique and review purposes.
+> Core business logic was written manually. AI assistance was limited to documentation, critique/review, and project-structure updates (for example, src-layout import and packaging configuration).
 
 ---
 
@@ -123,7 +123,7 @@ It reflects my commitment to writing clean, extensible code — and building sys
 
 ## 🙌 Let's Connect
 
-If you're hiring for backend Python roles in fintech, or just want to follow my engineering journey, feel free to connect:
+If you’d like to connect or follow my engineering journey, feel free to reach out:
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/brice-a-nelson-p-e-mba-36b28b15/)
 - 📂 [My GitHub Financial Projects Portfolio](https://github.com/Brice-Financial-Projects)
