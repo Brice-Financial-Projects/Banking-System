@@ -113,14 +113,6 @@ It reflects my commitment to writing clean, extensible code — and building sys
 
 ---
 
-## 🔖 Tags
-
-`python` `banking system` `fintech` `object-oriented programming` `backend developer`  
-`flask api` `account management` `transactions` `unit testing` `modular architecture`  
-`python projects` `python backend` `software engineering portfolio` `transition to tech`
-
----
-
 ## 🙌 Let's Connect
 
 If you’d like to connect or follow my engineering journey, feel free to reach out:
