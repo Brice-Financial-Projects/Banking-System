@@ -1,0 +1,32 @@
+[project]
+name = "banking-system"
+version = "0.1.0"
+description = "python OOP Project that handles multiple users with the creation and handling of bank accounts, account numbers, and transaction management"
+requires-python = ">=3.11"
+
+dependencies = [
+    "numpy==2.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.1",
+    "pytest-cov==6.2.1",
+    "coverage==7.9.1",
+    "pluggy==1.6.0",
+    "iniconfig==2.1.0",
+    "packaging==25.0",
+    "Pygments==2.19.2",
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

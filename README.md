@@ -49,6 +49,7 @@ This project reinforces key backend development skills relevant to fintech roles
 
 ## 📁 Project Structure
 
+```plaintext
 banking-system/
 │
 ├── config/                      # 💼 Config Files - Configuration settings
@@ -80,8 +81,7 @@ banking-system/
 ├── .env                         # environment variables (Not included in version control)
 ├── env.example                 # example of environment variables (included in version control)
 └── venv/                        # 🐍 Local virtual environment (typically ignored in version control)
-
-
+```
 
 ---
 
